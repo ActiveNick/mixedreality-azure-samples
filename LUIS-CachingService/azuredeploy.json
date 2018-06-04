@@ -225,21 +225,6 @@
           "properties": {
             "targetId": "[resourceId('Microsoft.NotificationHubs/namespaces/NotificationHubs', variables('notificationHubNamespace'), variables('notificationHubName'))]"
           }
-        },
-        {
-          "apiVersion": "2015-08-01",
-          "name": "web",
-          "type": "sourcecontrols",
-          "dependsOn": [
-            "[resourceId('Microsoft.Web/Sites', variables('uniqueAppName'))]",
-            "[resourceId('Microsoft.Web/Sites/config', variables('uniqueAppName'), 'appsettings')]",
-            "[resourceId('Microsoft.Web/Sites/config', variables('uniqueAppName'), 'connectionstrings')]"
-          ],
-          "properties": {
-            "RepoUrl": "[parameters('repoUrl')]",
-            "branch": "[parameters('branch')]",
-            "IsManualIntegration": "[parameters('manualIntegration')]"
-          }
         }
       ]
     },
@@ -340,7 +325,7 @@
           "location": "[resourceGroup().location]",
           "name": "open",
           "properties": {
-            "endIpAddress": "255.255.255.255",
+            "endIpAddress": "0.0.0.0",
             "startIpAddress": "0.0.0.0"
           }
         }
